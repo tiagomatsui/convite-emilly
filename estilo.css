@@ -2056,3 +2056,66 @@ body {
 
     margin: 0 !important;
 }
+/* =========================================
+   CORREÇÃO DEFINITIVA DO ESPAÇO BRANCO
+   ========================================= */
+
+html,
+body {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    min-height: 100% !important;
+    background: #050505 !important;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+/* A primeira tela fica sobre a segunda */
+.abertura {
+    position: fixed !important;
+    inset: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    height: 100dvh !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    z-index: 100 !important;
+}
+
+/* Quando clicar em Abrir convite,
+   a primeira tela deixa completamente de participar da página */
+.abertura.fechar {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+
+    width: 100vw !important;
+    height: 100vh !important;
+    height: 100dvh !important;
+
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+
+    transform: scale(1.08) !important;
+}
+
+/* Segunda tela começa EXATAMENTE no topo */
+.conteudo {
+    position: absolute !important;
+
+    top: 0 !important;
+    left: 0 !important;
+
+    width: 100% !important;
+    min-height: 100vh !important;
+    min-height: 100dvh !important;
+
+    margin: 0 !important;
+
+    z-index: 1 !important;
+}
