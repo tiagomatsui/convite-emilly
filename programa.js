@@ -8,6 +8,9 @@ const abertura = document.getElementById("abertura");
 
 const conteudo = document.getElementById("conteudo");
 
+const modalConfirmacao = document.getElementById("modalConfirmacao");
+const fecharModal = document.getElementById("fecharModal");
+const abrirWhatsApp = document.getElementById("abrirWhatsApp");
 
 botao.addEventListener("click", function () {
 
@@ -30,11 +33,28 @@ botao.addEventListener("click", function () {
    BOTÃO "CONFIRMAR PRESENÇA"
 ===================================================== */
 
-const botaoConfirmar =
-    document.getElementById("confirmarPresenca");
-
+const botaoConfirmar = document.getElementById("confirmarPresenca");
 
 botaoConfirmar.addEventListener("click", function () {
+    modalConfirmacao.classList.add("ativo");
+});
+fecharModal.addEventListener("click", function () {
+    modalConfirmacao.classList.remove("ativo");
+});
+abrirWhatsApp.addEventListener("click", function () {
+    const numeroWhatsApp = "5511932543205";
+
+    const mensagem =
+        "Olá! Quero confirmar minha presença no aniversário da Emilly Akico 🎉✨";
+
+    const linkWhatsApp =
+        "https://wa.me/" +
+        numeroWhatsApp +
+        "?text=" +
+        encodeURIComponent(mensagem);
+
+    window.open(linkWhatsApp, "_blank");
+});
 
     // Número que vai receber as confirmações
     const numeroWhatsApp = "5511932543205";
