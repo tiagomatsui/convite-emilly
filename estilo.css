@@ -15,10 +15,10 @@
 
 html,
 body {
-    width: 100%;
-    min-height: 100%;
     margin: 0;
     padding: 0;
+    width: 100%;
+    min-height: 100%;
 }
 
 body {
@@ -47,7 +47,7 @@ body {
 
 
 /* =========================================
-   BRILHO DO FUNDO PRATEADO
+   BRILHO DO FUNDO
 ========================================= */
 
 body::before {
@@ -118,10 +118,8 @@ body::after {
 
 
 /* =========================================
-   CAPA
-   CORREÇÃO:
-   fica fixa na tela e não ocupa espaço
-   depois de fechar
+   CAPA PRINCIPAL
+   CORREÇÃO DO ESPAÇO BRANCO
 ========================================= */
 
 .abertura {
@@ -156,10 +154,11 @@ body::after {
     animation:
         aparecer 1.8s ease;
 
-    background:
+    /* FUNDO PRATEADO ORIGINAL */
+    background-image:
         linear-gradient(
-            rgba(0,0,0,0.08),
-            rgba(0,0,0,0.08)
+            rgba(0, 0, 0, 0.08),
+            rgba(0, 0, 0, 0.08)
         ),
         url("fundo.png");
 
@@ -181,6 +180,19 @@ body::after {
 
     transform:
         scale(1.08);
+
+    /*
+       IMPORTANTE:
+       a capa continua fixa e não cria
+       espaço dentro da página.
+    */
+    position: fixed;
+
+    inset: 0;
+
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
 
     z-index: -1;
 }
@@ -243,7 +255,7 @@ body::after {
 
 
 /* =========================================
-   ESTRELAS DA CAPA
+   ESTRELAS PRETAS DA CAPA
 ========================================= */
 
 .estrela-1 {
@@ -412,7 +424,7 @@ body::after {
         0 0 8px rgba(255,255,255,0.3);
 
     animation:
-        fraseEntrada 1.8s ease;
+        fraseEntrada 1.8s ease forwards;
 }
 
 
@@ -421,7 +433,8 @@ body::after {
 ========================================= */
 
 button {
-    padding: 16px 45px;
+    padding:
+        16px 45px;
 
     border:
         1px solid rgba(255,255,255,0.65);
@@ -625,7 +638,6 @@ button:active {
    ESTRELAS PRATEADAS
 ========================================= */
 
-.conteudo .estrela,
 .conteudo .estrela-c1,
 .conteudo .estrela-c2,
 .conteudo .estrela-c3,
@@ -636,7 +648,48 @@ button:active {
 .conteudo .estrela-c8,
 .conteudo .estrela-c9,
 .conteudo .estrela-c10 {
+    position: absolute;
 
+    background:
+        linear-gradient(
+            145deg,
+            #ffffff 0%,
+            #bdbdbd 20%,
+            #555555 45%,
+            #eeeeee 65%,
+            #777777 82%,
+            #ffffff 100%
+        );
+
+    clip-path: polygon(
+        50% 0%,
+        61% 36%,
+        98% 36%,
+        68% 58%,
+        79% 96%,
+        50% 74%,
+        21% 96%,
+        32% 58%,
+        2% 36%,
+        39% 36%
+    );
+
+    filter:
+        drop-shadow(
+            0 0 5px rgba(255,255,255,0.35)
+        )
+        drop-shadow(
+            0 5px 8px rgba(0,0,0,0.8)
+        );
+
+    animation:
+        estrelaFlutuar 4s ease-in-out infinite;
+
+    z-index: 1;
+}
+
+
+.conteudo .estrela {
     background:
         linear-gradient(
             145deg,
@@ -659,38 +712,8 @@ button:active {
 
 
 /* =========================================
-   ESTRELAS DA SEGUNDA TELA
+   ESTRELAS SEGUNDA TELA
 ========================================= */
-
-.estrela-c1,
-.estrela-c2,
-.estrela-c3,
-.estrela-c4,
-.estrela-c5,
-.estrela-c6,
-.estrela-c7,
-.estrela-c8,
-.estrela-c9,
-.estrela-c10 {
-    position: absolute;
-
-    clip-path: polygon(
-        50% 0%,
-        61% 36%,
-        98% 36%,
-        68% 58%,
-        79% 96%,
-        50% 74%,
-        21% 96%,
-        32% 58%,
-        2% 36%,
-        39% 36%
-    );
-
-    animation:
-        estrelaFlutuar 4s ease-in-out infinite;
-}
-
 
 .estrela-c1 {
     width: 38px;
@@ -1216,7 +1239,7 @@ button:active {
 
 
 /* =========================================
-   CONFIRME SUA PRESENÇA
+   CONFIRMAÇÃO
 ========================================= */
 
 .confirmacao {
@@ -1824,7 +1847,9 @@ button:active {
     }
 
 
-    /* SEGUNDA TELA */
+    /* =====================================
+       SEGUNDA TELA
+    ====================================== */
 
     .conteudo {
         padding:
@@ -1832,8 +1857,6 @@ button:active {
 
         min-height: 100vh;
         min-height: 100dvh;
-
-        overflow: hidden;
     }
 
 
@@ -1886,13 +1909,16 @@ button:active {
     }
 
 
-    /* LEMBRETE */
+    /* =====================================
+       LEMBRETE
+    ====================================== */
 
     .lembrete {
         width: 100%;
         max-width: 330px;
         margin-top: 30px;
-        padding: 10px;
+        padding:
+            10px 10px;
     }
 
 
@@ -1906,7 +1932,9 @@ button:active {
     }
 
 
-    /* CARDS */
+    /* =====================================
+       QUADRADOS
+    ====================================== */
 
     .detalhes {
         gap: 10px;
@@ -1941,7 +1969,9 @@ button:active {
     }
 
 
-    /* CONFIRMAÇÃO */
+    /* =====================================
+       CONFIRMAÇÃO
+    ====================================== */
 
     .confirmacao {
         max-width: 330px;
@@ -1970,7 +2000,9 @@ button:active {
     }
 
 
-    /* MENSAGEM */
+    /* =====================================
+       MENSAGEM ESPECIAL
+    ====================================== */
 
     .mensagem-especial {
         max-width: 340px;
@@ -2010,7 +2042,9 @@ button:active {
     }
 
 
-    /* ESTRELAS DA SEGUNDA TELA */
+    /* =====================================
+       ESTRELAS DA SEGUNDA TELA
+    ====================================== */
 
     .estrela-c1 {
         width: 28px;
