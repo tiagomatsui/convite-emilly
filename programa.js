@@ -56,24 +56,4 @@ abrirWhatsApp.addEventListener("click", function () {
     window.open(linkWhatsApp, "_blank");
 });
 
-    // Número que vai receber as confirmações
-    const numeroWhatsApp = "5511932543205";
-
-
-    // Mensagem que será colocada automaticamente
-    const mensagem =
-        "Olá! Quero confirmar minha presença no aniversário da Emilly Akico 🎉✨";
-
-
-    // Monta o endereço do WhatsApp
-    const linkWhatsApp =
-        "https://wa.me/" +
-        numeroWhatsApp +
-        "?text=" +
-        encodeURIComponent(mensagem);
-
-
-    // Abre o WhatsApp em uma nova aba
-    window.open(linkWhatsApp, "_blank");
-
-});
+   
