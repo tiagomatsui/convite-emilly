@@ -13,6 +13,14 @@
    BODY
 ========================================= */
 
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
 body {
     min-height: 100vh;
 
@@ -39,7 +47,7 @@ body {
 
 
 /* =========================================
-   BRILHO DO FUNDO
+   BRILHO DO FUNDO PRATEADO
 ========================================= */
 
 body::before {
@@ -111,10 +119,21 @@ body::after {
 
 /* =========================================
    CAPA
+   CORREÇÃO:
+   fica fixa na tela e não ocupa espaço
+   depois de fechar
 ========================================= */
 
 .abertura {
-    min-height: 100vh;
+    position: fixed;
+
+    inset: 0;
+
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
+
+    min-height: 0;
 
     display: flex;
 
@@ -128,9 +147,7 @@ body::after {
 
     padding: 30px;
 
-    position: relative;
-
-    z-index: 5;
+    z-index: 20;
 
     transition:
         opacity 1.2s ease,
@@ -138,6 +155,34 @@ body::after {
 
     animation:
         aparecer 1.8s ease;
+
+    background:
+        linear-gradient(
+            rgba(0,0,0,0.08),
+            rgba(0,0,0,0.08)
+        ),
+        url("fundo.png");
+
+    background-size: cover;
+    background-position: center;
+}
+
+
+/* =========================================
+   CAPA FECHANDO
+========================================= */
+
+.abertura.fechar {
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+
+    transform:
+        scale(1.08);
+
+    z-index: -1;
 }
 
 
@@ -318,6 +363,7 @@ body::after {
 ========================================= */
 
 @keyframes estrelaFlutuar {
+
     0% {
         opacity: 0.72;
 
@@ -366,7 +412,7 @@ body::after {
         0 0 8px rgba(255,255,255,0.3);
 
     animation:
-        fraseEntrada 1.8s ease forwards;
+        fraseEntrada 1.8s ease;
 }
 
 
@@ -375,8 +421,7 @@ body::after {
 ========================================= */
 
 button {
-    padding:
-        16px 45px;
+    padding: 16px 45px;
 
     border:
         1px solid rgba(255,255,255,0.65);
@@ -444,8 +489,7 @@ button::before {
             transparent
         );
 
-    transform:
-        rotate(20deg);
+    transform: rotate(20deg);
 
     animation:
         brilhoBotao 4s ease-in-out infinite;
@@ -479,22 +523,7 @@ button:hover {
 
 
 button:active {
-    transform:
-        scale(0.96);
-}
-
-
-/* =========================================
-   CAPA FECHANDO
-========================================= */
-
-.abertura.fechar {
-    opacity: 0;
-
-    transform:
-        scale(1.08);
-
-    pointer-events: none;
+    transform: scale(0.96);
 }
 
 
@@ -563,6 +592,8 @@ button:active {
         translateY(0);
 
     pointer-events: auto;
+
+    z-index: 10;
 }
 
 
@@ -585,6 +616,7 @@ button:active {
 
 .conteudo > *:not(.estrelas-conteudo) {
     position: relative;
+
     z-index: 3;
 }
 
@@ -593,7 +625,18 @@ button:active {
    ESTRELAS PRATEADAS
 ========================================= */
 
-.conteudo .estrela {
+.conteudo .estrela,
+.conteudo .estrela-c1,
+.conteudo .estrela-c2,
+.conteudo .estrela-c3,
+.conteudo .estrela-c4,
+.conteudo .estrela-c5,
+.conteudo .estrela-c6,
+.conteudo .estrela-c7,
+.conteudo .estrela-c8,
+.conteudo .estrela-c9,
+.conteudo .estrela-c10 {
+
     background:
         linear-gradient(
             145deg,
@@ -618,6 +661,36 @@ button:active {
 /* =========================================
    ESTRELAS DA SEGUNDA TELA
 ========================================= */
+
+.estrela-c1,
+.estrela-c2,
+.estrela-c3,
+.estrela-c4,
+.estrela-c5,
+.estrela-c6,
+.estrela-c7,
+.estrela-c8,
+.estrela-c9,
+.estrela-c10 {
+    position: absolute;
+
+    clip-path: polygon(
+        50% 0%,
+        61% 36%,
+        98% 36%,
+        68% 58%,
+        79% 96%,
+        50% 74%,
+        21% 96%,
+        32% 58%,
+        2% 36%,
+        39% 36%
+    );
+
+    animation:
+        estrelaFlutuar 4s ease-in-out infinite;
+}
+
 
 .estrela-c1 {
     width: 38px;
@@ -921,19 +994,17 @@ button:active {
 }
 
 
-/* =========================================
-   LINHA ABAIXO DO NOME
-========================================= */
-
 .nome-aniversariante::after {
     content: "";
 
     display: block;
 
     width: 130px;
+
     height: 1px;
 
-    margin: 12px auto 0;
+    margin:
+        12px auto 0;
 
     background:
         linear-gradient(
@@ -1077,11 +1148,9 @@ button:active {
     animation-delay: 3.5s;
 }
 
-
 .conteudo.mostrar .detalhe:nth-child(2) {
     animation-delay: 3.7s;
 }
-
 
 .conteudo.mostrar .detalhe:nth-child(3) {
     animation-delay: 3.9s;
@@ -1171,10 +1240,6 @@ button:active {
 }
 
 
-/* =========================================
-   TÍTULO DA CONFIRMAÇÃO
-========================================= */
-
 .confirmacao-titulo {
     font-size: 16px;
 
@@ -1187,10 +1252,6 @@ button:active {
 }
 
 
-/* =========================================
-   TEXTO DA CONFIRMAÇÃO
-========================================= */
-
 .confirmacao-texto {
     font-size: 14px;
 
@@ -1201,10 +1262,6 @@ button:active {
     margin-top: 12px;
 }
 
-
-/* =========================================
-   BOTÃO DE CONFIRMAÇÃO
-========================================= */
 
 .botao-confirmar {
     margin-top: 24px;
@@ -1240,10 +1297,6 @@ button:active {
 }
 
 
-/* =========================================
-   LINHAS DA MENSAGEM
-========================================= */
-
 .mensagem-linha {
     width: 120px;
 
@@ -1271,10 +1324,6 @@ button:active {
 }
 
 
-/* =========================================
-   TÍTULO DA MENSAGEM
-========================================= */
-
 .mensagem-titulo {
     font-size: 14px;
 
@@ -1286,10 +1335,6 @@ button:active {
         0 0 8px rgba(255,255,255,0.15);
 }
 
-
-/* =========================================
-   TEXTO DA MENSAGEM
-========================================= */
 
 .mensagem-texto {
     max-width: 550px;
@@ -1304,10 +1349,6 @@ button:active {
     color: #b8b8b8;
 }
 
-
-/* =========================================
-   ASSINATURA
-========================================= */
 
 .mensagem-final {
     margin-top: 24px;
@@ -1327,6 +1368,7 @@ button:active {
 ========================================= */
 
 @keyframes aparecer {
+
     from {
         opacity: 0;
 
@@ -1344,6 +1386,7 @@ button:active {
 
 
 @keyframes fraseEntrada {
+
     0% {
         opacity: 0;
 
@@ -1373,6 +1416,7 @@ button:active {
 
 
 @keyframes botaoEntrada {
+
     0% {
         opacity: 0;
 
@@ -1392,6 +1436,7 @@ button:active {
 
 
 @keyframes brilhoBotao {
+
     0% {
         left: -80%;
     }
@@ -1407,6 +1452,7 @@ button:active {
 
 
 @keyframes brilhoPrata {
+
     0% {
         left: -100%;
     }
@@ -1422,6 +1468,7 @@ button:active {
 
 
 @keyframes tituloEntrada {
+
     0% {
         opacity: 0;
 
@@ -1445,6 +1492,7 @@ button:active {
 
 
 @keyframes aUmEntrada {
+
     0% {
         opacity: 0;
 
@@ -1462,6 +1510,7 @@ button:active {
 
 
 @keyframes estrelaSequencia {
+
     0% {
         opacity: 0;
 
@@ -1489,6 +1538,7 @@ button:active {
 
 
 @keyframes estrela19Brilho {
+
     0% {
         opacity: 0.65;
     }
@@ -1504,6 +1554,7 @@ button:active {
 
 
 @keyframes numeroSequencia {
+
     0% {
         opacity: 0;
 
@@ -1545,6 +1596,7 @@ button:active {
 
 
 @keyframes especialEntrada {
+
     0% {
         opacity: 0;
 
@@ -1564,6 +1616,7 @@ button:active {
 
 
 @keyframes nomeEntrada {
+
     0% {
         opacity: 0;
 
@@ -1587,6 +1640,7 @@ button:active {
 
 
 @keyframes cardEntrada {
+
     0% {
         opacity: 0;
 
@@ -1606,6 +1660,7 @@ button:active {
 
 
 @keyframes lembreteEntrada {
+
     0% {
         opacity: 0;
 
@@ -1629,6 +1684,7 @@ button:active {
 
 
 @keyframes confirmacaoEntrada {
+
     0% {
         opacity: 0;
 
@@ -1652,6 +1708,7 @@ button:active {
 
 
 @keyframes mensagemEntrada {
+
     0% {
         opacity: 0;
 
@@ -1767,13 +1824,16 @@ button:active {
     }
 
 
-    /* =====================================
-       SEGUNDA TELA
-    ====================================== */
+    /* SEGUNDA TELA */
 
     .conteudo {
         padding:
             30px 20px 60px;
+
+        min-height: 100vh;
+        min-height: 100dvh;
+
+        overflow: hidden;
     }
 
 
@@ -1826,16 +1886,13 @@ button:active {
     }
 
 
-    /* =====================================
-       LEMBRETE NO CELULAR
-    ====================================== */
+    /* LEMBRETE */
 
     .lembrete {
         width: 100%;
         max-width: 330px;
         margin-top: 30px;
-        padding:
-            10px 10px;
+        padding: 10px;
     }
 
 
@@ -1849,9 +1906,7 @@ button:active {
     }
 
 
-    /* =====================================
-       QUADRADOS NO CELULAR
-    ====================================== */
+    /* CARDS */
 
     .detalhes {
         gap: 10px;
@@ -1886,9 +1941,7 @@ button:active {
     }
 
 
-    /* =====================================
-       CONFIRMAÇÃO NO CELULAR
-    ====================================== */
+    /* CONFIRMAÇÃO */
 
     .confirmacao {
         max-width: 330px;
@@ -1917,9 +1970,7 @@ button:active {
     }
 
 
-    /* =====================================
-       MENSAGEM ESPECIAL NO CELULAR
-    ====================================== */
+    /* MENSAGEM */
 
     .mensagem-especial {
         max-width: 340px;
@@ -1959,9 +2010,7 @@ button:active {
     }
 
 
-    /* =====================================
-       ESTRELAS DA SEGUNDA TELA
-    ====================================== */
+    /* ESTRELAS DA SEGUNDA TELA */
 
     .estrela-c1 {
         width: 28px;
@@ -2012,110 +2061,4 @@ button:active {
         width: 38px;
         height: 38px;
     }
-}
-
-
-/* =========================================
-   CORREÇÃO DO ESPAÇO BRANCO
-========================================= */
-
-html,
-body {
-    margin: 0 !important;
-    padding: 0 !important;
-    background: #050505;
-}
-
-
-.abertura.fechar {
-    opacity: 0 !important;
-    visibility: hidden !important;
-    pointer-events: none !important;
-
-    position: absolute !important;
-
-    top: 0 !important;
-    left: 0 !important;
-
-    width: 100% !important;
-    height: 100vh !important;
-
-    min-height: 0 !important;
-
-    transform: scale(1.08);
-}
-
-
-.conteudo {
-    position: absolute !important;
-
-    top: 0 !important;
-    left: 0 !important;
-
-    width: 100% !important;
-
-    margin: 0 !important;
-}
-/* =========================================
-   CORREÇÃO DEFINITIVA DO ESPAÇO BRANCO
-   ========================================= */
-
-html,
-body {
-    margin: 0 !important;
-    padding: 0 !important;
-    width: 100% !important;
-    min-height: 100% !important;
-    background: #050505 !important;
-}
-
-body {
-    overflow-x: hidden;
-}
-
-/* A primeira tela fica sobre a segunda */
-.abertura {
-    position: fixed !important;
-    inset: 0 !important;
-    width: 100vw !important;
-    height: 100vh !important;
-    height: 100dvh !important;
-    min-height: 0 !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    z-index: 100 !important;
-}
-
-/* Quando clicar em Abrir convite,
-   a primeira tela deixa completamente de participar da página */
-.abertura.fechar {
-    position: fixed !important;
-    top: 0 !important;
-    left: 0 !important;
-
-    width: 100vw !important;
-    height: 100vh !important;
-    height: 100dvh !important;
-
-    opacity: 0 !important;
-    visibility: hidden !important;
-    pointer-events: none !important;
-
-    transform: scale(1.08) !important;
-}
-
-/* Segunda tela começa EXATAMENTE no topo */
-.conteudo {
-    position: absolute !important;
-
-    top: 0 !important;
-    left: 0 !important;
-
-    width: 100% !important;
-    min-height: 100vh !important;
-    min-height: 100dvh !important;
-
-    margin: 0 !important;
-
-    z-index: 1 !important;
 }
