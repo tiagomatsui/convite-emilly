@@ -1,27 +1,175 @@
 /* =========================================
-   ESTRELAS EXTRAS DA SEGUNDA TELA
+   RESET
 ========================================= */
 
-.conteudo .estrela-c11,
-.conteudo .estrela-c12,
-.conteudo .estrela-c13,
-.conteudo .estrela-c14,
-.conteudo .estrela-c15,
-.conteudo .estrela-c16,
-.conteudo .estrela-c17,
-.conteudo .estrela-c18 {
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
+
+/* =========================================
+   BODY
+========================================= */
+
+body {
+    min-height: 100vh;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    color: #111111;
+
+    overflow-x: hidden;
+
+    background-image:
+        linear-gradient(
+            rgba(0, 0, 0, 0.08),
+            rgba(0, 0, 0, 0.08)
+        ),
+        url("fundo.png");
+
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+
+/* =========================================
+   BRILHO DO FUNDO
+========================================= */
+
+body::before {
+    content: "";
+
+    position: fixed;
+
+    top: 0;
+    left: -100%;
+
+    width: 45%;
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,0.03),
+            rgba(255,255,255,0.18),
+            rgba(255,255,255,0.03),
+            transparent
+        );
+
+    transform: skewX(-18deg);
+
+    animation:
+        brilhoPrata 9s ease-in-out infinite;
+
+    pointer-events: none;
+
+    z-index: 50;
+}
+
+
+/* =========================================
+   ESCURECIMENTO DAS BORDAS
+========================================= */
+
+body::after {
+    content: "";
+
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    background:
+        radial-gradient(
+            ellipse at center,
+            transparent 30%,
+            rgba(0,0,0,0.28) 100%
+        );
+
+    z-index: 2;
+}
+
+
+/* =========================================
+   CONVITE
+========================================= */
+
+.convite {
+    width: 100%;
+    min-height: 100vh;
+    position: relative;
+}
+
+
+/* =========================================
+   CAPA
+========================================= */
+
+.abertura {
+    min-height: 100vh;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+
+    padding: 30px;
+
+    position: relative;
+
+    z-index: 5;
+
+    transition:
+        opacity 1.2s ease,
+        transform 1.2s ease;
+
+    animation:
+        aparecer 1.8s ease;
+}
+
+
+/* =========================================
+   ESTRELAS DA CAPA
+========================================= */
+
+.estrelas-capa {
     position: absolute;
 
-    background: linear-gradient(
-        145deg,
-        #ffffff 0%,
-        #bdbdbd 20%,
-        #555555 45%,
-        #eeeeee 65%,
-        #777777 82%,
-        #ffffff 100%
-    );
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    pointer-events: none;
+
+    overflow: hidden;
+}
+
+
+/* =========================================
+   ESTRELA BASE
+========================================= */
+
+.estrela {
+    position: absolute;
+
+    width: 30px;
+    height: 30px;
+
+    background: #050505;
 
     clip-path: polygon(
         50% 0%,
@@ -38,103 +186,673 @@
 
     filter:
         drop-shadow(
+            0 2px 2px rgba(255,255,255,0.22)
+        )
+        drop-shadow(
+            0 5px 7px rgba(0,0,0,0.45)
+        );
+
+    animation:
+        estrelaFlutuar 4s ease-in-out infinite;
+}
+
+
+/* =========================================
+   ESTRELAS DA CAPA
+========================================= */
+
+.estrela-1 {
+    width: 58px;
+    height: 58px;
+    top: 8%;
+    left: 8%;
+}
+
+.estrela-2 {
+    width: 24px;
+    height: 24px;
+    top: 18%;
+    left: 28%;
+    animation-delay: 1.1s;
+}
+
+.estrela-3 {
+    width: 34px;
+    height: 34px;
+    top: 10%;
+    right: 22%;
+    animation-delay: 0.5s;
+}
+
+.estrela-4 {
+    width: 62px;
+    height: 62px;
+    top: 24%;
+    right: 5%;
+    animation-delay: 2s;
+}
+
+.estrela-5 {
+    width: 28px;
+    height: 28px;
+    top: 39%;
+    left: 8%;
+    animation-delay: 1.6s;
+}
+
+.estrela-6 {
+    width: 46px;
+    height: 46px;
+    top: 46%;
+    right: 8%;
+    animation-delay: 0.8s;
+}
+
+.estrela-7 {
+    width: 22px;
+    height: 22px;
+    top: 57%;
+    left: 19%;
+    animation-delay: 2.5s;
+}
+
+.estrela-8 {
+    width: 50px;
+    height: 50px;
+    top: 69%;
+    right: 11%;
+    animation-delay: 1.4s;
+}
+
+.estrela-9 {
+    width: 27px;
+    height: 27px;
+    bottom: 16%;
+    left: 9%;
+    animation-delay: 0.7s;
+}
+
+.estrela-10 {
+    width: 35px;
+    height: 35px;
+    bottom: 12%;
+    right: 28%;
+    animation-delay: 2.2s;
+}
+
+.estrela-11 {
+    width: 20px;
+    height: 20px;
+    top: 33%;
+    left: 46%;
+    animation-delay: 1.9s;
+}
+
+.estrela-12 {
+    width: 30px;
+    height: 30px;
+    bottom: 29%;
+    right: 42%;
+    animation-delay: 0.3s;
+}
+
+.estrela-13 {
+    width: 25px;
+    height: 25px;
+    top: 73%;
+    left: 35%;
+    animation-delay: 1.7s;
+}
+
+.estrela-14 {
+    width: 42px;
+    height: 42px;
+    top: 82%;
+    right: 6%;
+    animation-delay: 2.7s;
+}
+
+
+/* =========================================
+   ANIMAÇÃO DAS ESTRELAS
+========================================= */
+
+@keyframes estrelaFlutuar {
+    0% {
+        opacity: 0.72;
+
+        transform:
+            scale(0.92)
+            rotate(-5deg);
+    }
+
+    50% {
+        opacity: 1;
+
+        transform:
+            scale(1.08)
+            rotate(5deg);
+    }
+
+    100% {
+        opacity: 0.72;
+
+        transform:
+            scale(0.92)
+            rotate(-5deg);
+    }
+}
+
+
+/* =========================================
+   FRASE DA CAPA
+========================================= */
+
+.espiadinha {
+    font-size: 38px;
+
+    font-style: italic;
+
+    color: #080808;
+
+    margin-bottom: 40px;
+
+    position: relative;
+
+    z-index: 10;
+
+    text-shadow:
+        0 1px 2px rgba(255,255,255,0.7),
+        0 0 8px rgba(255,255,255,0.3);
+
+    animation:
+        fraseEntrada 1.8s ease forwards;
+}
+
+
+/* =========================================
+   BOTÃO
+========================================= */
+
+button {
+    padding:
+        16px 45px;
+
+    border:
+        1px solid rgba(255,255,255,0.65);
+
+    border-radius: 40px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(10,10,10,0.95),
+            rgba(45,45,45,0.9)
+        );
+
+    color: #eeeeee;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 13px;
+
+    letter-spacing: 3px;
+
+    cursor: pointer;
+
+    position: relative;
+
+    z-index: 10;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 8px 25px rgba(0,0,0,0.5),
+        inset 0 1px 2px rgba(255,255,255,0.25);
+
+    transition:
+        transform 0.4s ease,
+        box-shadow 0.4s ease,
+        background 0.4s ease;
+
+    animation:
+        botaoEntrada 1.5s ease 0.4s both;
+}
+
+
+button::before {
+    content: "";
+
+    position: absolute;
+
+    top: -60%;
+    left: -80%;
+
+    width: 45%;
+    height: 220%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,0.05),
+            rgba(255,255,255,0.55),
+            rgba(255,255,255,0.05),
+            transparent
+        );
+
+    transform:
+        rotate(20deg);
+
+    animation:
+        brilhoBotao 4s ease-in-out infinite;
+
+    pointer-events: none;
+}
+
+
+button span {
+    position: relative;
+    z-index: 2;
+}
+
+
+button:hover {
+    transform:
+        translateY(-4px)
+        scale(1.03);
+
+    background:
+        linear-gradient(
+            145deg,
+            #050505,
+            #505050
+        );
+
+    box-shadow:
+        0 12px 30px rgba(0,0,0,0.6),
+        0 0 20px rgba(255,255,255,0.18);
+}
+
+
+button:active {
+    transform:
+        scale(0.96);
+}
+
+
+/* =========================================
+   CAPA FECHANDO
+========================================= */
+
+.abertura.fechar {
+    opacity: 0;
+
+    transform:
+        scale(1.08);
+
+    pointer-events: none;
+}
+
+
+/* =========================================
+   SEGUNDA TELA
+========================================= */
+
+.conteudo {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+
+    min-height: 100vh;
+
+    padding:
+        35px 30px 70px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    text-align: center;
+
+    justify-content: flex-start;
+
+    opacity: 0;
+
+    transform:
+        translateY(50px);
+
+    pointer-events: none;
+
+    transition:
+        opacity 1.5s ease,
+        transform 1.5s ease;
+
+    z-index: 5;
+
+    background:
+        radial-gradient(
+            ellipse at center,
+            #181818 0%,
+            #080808 55%,
+            #000000 100%
+        );
+
+    color: #d8d8d8;
+
+    overflow: hidden;
+}
+
+
+/* =========================================
+   SEGUNDA TELA VISÍVEL
+========================================= */
+
+.conteudo.mostrar {
+    opacity: 1;
+
+    transform:
+        translateY(0);
+
+    pointer-events: auto;
+}
+
+
+/* =========================================
+   ESTRELAS DA SEGUNDA TELA
+========================================= */
+
+.estrelas-conteudo {
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    overflow: hidden;
+
+    z-index: 0;
+}
+
+
+.conteudo > *:not(.estrelas-conteudo) {
+    position: relative;
+    z-index: 3;
+}
+
+
+/* =========================================
+   ESTRELAS PRATEADAS
+========================================= */
+
+.conteudo .estrela {
+    background:
+        linear-gradient(
+            145deg,
+            #ffffff 0%,
+            #bdbdbd 20%,
+            #555555 45%,
+            #eeeeee 65%,
+            #777777 82%,
+            #ffffff 100%
+        );
+
+    filter:
+        drop-shadow(
             0 0 5px rgba(255,255,255,0.35)
         )
         drop-shadow(
             0 5px 8px rgba(0,0,0,0.8)
         );
-
-    animation:
-        estrelaFlutuar 4s ease-in-out infinite;
-
-    z-index: 1;
-}
-
-
-/* POSIÇÕES */
-
-.estrela-c11 {
-    width: 18px;
-    height: 18px;
-    top: 12%;
-    left: 38%;
-    animation-delay: 1.3s;
-}
-
-.estrela-c12 {
-    width: 30px;
-    height: 30px;
-    top: 22%;
-    left: 12%;
-    animation-delay: 2.1s;
-}
-
-.estrela-c13 {
-    width: 22px;
-    height: 22px;
-    top: 27%;
-    right: 27%;
-    animation-delay: 0.7s;
-}
-
-.estrela-c14 {
-    width: 40px;
-    height: 40px;
-    top: 43%;
-    left: 18%;
-    animation-delay: 1.8s;
-}
-
-.estrela-c15 {
-    width: 18px;
-    height: 18px;
-    top: 48%;
-    right: 24%;
-    animation-delay: 2.6s;
-}
-
-.estrela-c16 {
-    width: 32px;
-    height: 32px;
-    top: 66%;
-    left: 6%;
-    animation-delay: 0.9s;
-}
-
-.estrela-c17 {
-    width: 24px;
-    height: 24px;
-    top: 70%;
-    right: 10%;
-    animation-delay: 1.6s;
-}
-
-.estrela-c18 {
-    width: 42px;
-    height: 42px;
-    bottom: 13%;
-    left: 43%;
-    animation-delay: 2.4s;
 }
 
 
 /* =========================================
-   ANIMAÇÃO EXTRA DA SEGUNDA PÁGINA
+   ESTRELAS DA SEGUNDA TELA
 ========================================= */
 
-.conteudo.mostrar .convite-topo {
-    animation: tituloEntrada 1s ease 0.2s forwards;
+.estrela-c1 {
+    width: 38px;
+    height: 38px;
+    top: 8%;
+    left: 8%;
 }
 
-.conteudo.mostrar .a-um {
-    animation: aUmEntrada 1s ease 0.7s forwards;
+.estrela-c2 {
+    width: 22px;
+    height: 22px;
+    top: 17%;
+    right: 15%;
+    animation-delay: 1s;
 }
+
+.estrela-c3 {
+    width: 48px;
+    height: 48px;
+    top: 31%;
+    left: 5%;
+    animation-delay: 2s;
+}
+
+.estrela-c4 {
+    width: 25px;
+    height: 25px;
+    top: 37%;
+    right: 8%;
+    animation-delay: 0.5s;
+}
+
+.estrela-c5 {
+    width: 30px;
+    height: 30px;
+    top: 54%;
+    left: 12%;
+    animation-delay: 1.7s;
+}
+
+.estrela-c6 {
+    width: 44px;
+    height: 44px;
+    top: 58%;
+    right: 6%;
+    animation-delay: 2.5s;
+}
+
+.estrela-c7 {
+    width: 20px;
+    height: 20px;
+    top: 72%;
+    left: 28%;
+    animation-delay: 0.8s;
+}
+
+.estrela-c8 {
+    width: 35px;
+    height: 35px;
+    top: 78%;
+    right: 22%;
+    animation-delay: 1.4s;
+}
+
+.estrela-c9 {
+    width: 27px;
+    height: 27px;
+    bottom: 8%;
+    left: 8%;
+    animation-delay: 2.2s;
+}
+
+.estrela-c10 {
+    width: 52px;
+    height: 52px;
+    bottom: 5%;
+    right: 5%;
+    animation-delay: 0.4s;
+}
+
+
+/* =========================================
+   VOCÊ ESTÁ CONVIDADO
+========================================= */
+
+.convite-topo {
+    font-size: 18px;
+
+    letter-spacing: 7px;
+
+    font-weight: normal;
+
+    margin-top: 20px;
+    margin-bottom: 15px;
+
+    color: #d8d8d8;
+
+    opacity: 0;
+
+    text-shadow:
+        0 0 8px rgba(255,255,255,0.15);
+}
+
+
+.conteudo.mostrar .convite-topo {
+    animation:
+        tituloEntrada 1s ease 0.2s forwards;
+}
+
+
+/* =========================================
+   A UM
+========================================= */
+
+.a-um {
+    font-size: 42px;
+
+    font-weight: normal;
+
+    letter-spacing: 5px;
+
+    margin-bottom: 0;
+
+    color: #cfcfcf;
+
+    opacity: 0;
+
+    text-shadow:
+        0 0 10px rgba(255,255,255,0.12);
+}
+
+
+.conteudo.mostrar .a-um {
+    animation:
+        aUmEntrada 1s ease 0.7s forwards;
+}
+
+
+/* =========================================
+   ESTRELA ACIMA DO 19
+========================================= */
+
+.estrela-19 {
+    font-family: Arial, sans-serif;
+
+    font-size: 43px;
+
+    line-height: 0.65;
+
+    color: #dddddd;
+
+    margin-top: 5px;
+    margin-bottom: -2px;
+
+    opacity: 0;
+
+    text-shadow:
+        0 0 5px rgba(255,255,255,0.6),
+        0 3px 8px rgba(0,0,0,0.9);
+}
+
 
 .conteudo.mostrar .estrela-19 {
     animation:
         estrelaSequencia 1.2s ease 1.1s forwards,
         estrela19Brilho 3s ease-in-out 2.3s infinite;
 }
+
+
+/* =========================================
+   NÚMERO
+========================================= */
+
+.numero-container {
+    margin-top: 0;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+}
+
+
+/* =========================================
+   19 METÁLICO
+========================================= */
+
+.numero-19 {
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size:
+        clamp(130px, 18vw, 220px);
+
+    font-weight: bold;
+
+    line-height: 0.82;
+
+    letter-spacing: -14px;
+
+    padding-right: 14px;
+
+    color: #d0d0d0;
+
+    background:
+        linear-gradient(
+            145deg,
+            #ffffff 0%,
+            #777777 15%,
+            #ffffff 28%,
+            #444444 45%,
+            #eeeeee 62%,
+            #666666 78%,
+            #ffffff 100%
+        );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+
+    filter:
+        drop-shadow(
+            0 5px 4px rgba(0,0,0,0.9)
+        )
+        drop-shadow(
+            0 0 12px rgba(255,255,255,0.3)
+        );
+
+    opacity: 0;
+}
+
 
 .conteudo.mostrar .numero-19 {
     animation:
@@ -144,40 +862,377 @@
         forwards;
 }
 
+
+/* =========================================
+   ESPECIAL
+========================================= */
+
+.especial {
+    font-size: 28px;
+
+    font-weight: bold;
+
+    letter-spacing: 9px;
+
+    margin-top: 15px;
+
+    padding-left: 9px;
+
+    color: #d4d4d4;
+
+    text-shadow:
+        0 0 8px rgba(255,255,255,0.18);
+
+    opacity: 0;
+}
+
+
 .conteudo.mostrar .especial {
     animation:
         especialEntrada 1s ease 2.25s forwards;
 }
+
+
+/* =========================================
+   EMILLY AKICO
+========================================= */
+
+.nome-aniversariante {
+    font-size: 24px;
+
+    font-weight: normal;
+
+    letter-spacing: 5px;
+
+    margin-top: 12px;
+
+    color: #cfcfcf;
+
+    text-shadow:
+        0 0 8px rgba(255,255,255,0.16);
+
+    opacity: 0;
+}
+
 
 .conteudo.mostrar .nome-aniversariante {
     animation:
         nomeEntrada 1s ease 2.6s forwards;
 }
 
+
+/* =========================================
+   LINHA ABAIXO DO NOME
+========================================= */
+
+.nome-aniversariante::after {
+    content: "";
+
+    display: block;
+
+    width: 130px;
+    height: 1px;
+
+    margin: 12px auto 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #bdbdbd,
+            transparent
+        );
+
+    box-shadow:
+        0 0 7px rgba(255,255,255,0.25);
+}
+
+
+/* =========================================
+   LEMBRETE
+========================================= */
+
+.lembrete {
+    width: 100%;
+
+    max-width: 520px;
+
+    text-align: center;
+
+    padding: 15px 20px;
+
+    margin-top: 38px;
+
+    color: #cfcfcf;
+
+    opacity: 0;
+}
+
+
 .conteudo.mostrar .lembrete {
     animation:
         lembreteEntrada 1s ease 3.1s forwards;
 }
 
-.conteudo.mostrar .detalhe:nth-child(1) {
-    animation:
-        cardEntrada 0.9s ease 3.5s forwards;
+
+.lembrete-titulo {
+    font-size: 15px;
+
+    font-weight: bold;
+
+    line-height: 1.5;
+
+    margin-bottom: 6px;
+
+    color: #e0e0e0;
+
+    text-shadow:
+        0 0 7px rgba(255,255,255,0.15);
 }
+
+
+.lembrete-texto {
+    font-size: 13px;
+
+    line-height: 1.6;
+
+    color: #aeadad;
+}
+
+
+/* =========================================
+   DETALHES
+========================================= */
+
+.detalhes {
+    width: 100%;
+
+    max-width: 850px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: stretch;
+
+    gap: 25px;
+
+    margin-top: 28px;
+
+    flex-wrap: nowrap;
+}
+
+
+/* =========================================
+   CARDS
+========================================= */
+
+.detalhe {
+    width: 210px;
+
+    min-height: 175px;
+
+    padding:
+        25px 20px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    border:
+        1px solid rgba(210,210,210,0.45);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,0.08),
+            rgba(255,255,255,0.02)
+        );
+
+    backdrop-filter:
+        blur(6px);
+
+    box-shadow:
+        0 8px 25px rgba(0,0,0,0.65),
+        inset 0 1px 1px rgba(255,255,255,0.08);
+
+    transition:
+        0.4s ease;
+
+    opacity: 0;
+}
+
+
+.conteudo.mostrar .detalhe {
+    animation:
+        cardEntrada 0.9s ease forwards;
+}
+
+
+.conteudo.mostrar .detalhe:nth-child(1) {
+    animation-delay: 3.5s;
+}
+
 
 .conteudo.mostrar .detalhe:nth-child(2) {
-    animation:
-        cardEntrada 0.9s ease 3.7s forwards;
+    animation-delay: 3.7s;
 }
 
+
 .conteudo.mostrar .detalhe:nth-child(3) {
-    animation:
-        cardEntrada 0.9s ease 3.9s forwards;
+    animation-delay: 3.9s;
 }
+
+
+.detalhe:hover {
+    transform:
+        translateY(-7px);
+
+    background:
+        rgba(255,255,255,0.10);
+
+    border-color:
+        rgba(255,255,255,0.7);
+}
+
+
+/* =========================================
+   ÍCONES
+========================================= */
+
+.icone {
+    font-size: 32px;
+
+    display: block;
+
+    margin-bottom: 15px;
+
+    color: #d5d5d5;
+
+    text-shadow:
+        0 0 8px rgba(255,255,255,0.2);
+}
+
+
+/* =========================================
+   TÍTULO DOS CARDS
+========================================= */
+
+.detalhe p {
+    font-size: 12px;
+
+    letter-spacing: 4px;
+
+    margin-bottom: 8px;
+
+    color: #c7c7c7;
+}
+
+
+/* =========================================
+   INFORMAÇÃO
+========================================= */
+
+.detalhe strong {
+    font-size: 16px;
+
+    font-weight: normal;
+
+    color: #eeeeee;
+}
+
+
+/* =========================================
+   CONFIRME SUA PRESENÇA
+========================================= */
+
+.confirmacao {
+    width: 100%;
+
+    max-width: 600px;
+
+    text-align: center;
+
+    margin-top: 65px;
+
+    padding-bottom: 70px;
+
+    opacity: 0;
+}
+
 
 .conteudo.mostrar .confirmacao {
     animation:
         confirmacaoEntrada 1s ease 4.2s forwards;
 }
+
+
+/* =========================================
+   TÍTULO DA CONFIRMAÇÃO
+========================================= */
+
+.confirmacao-titulo {
+    font-size: 16px;
+
+    letter-spacing: 5px;
+
+    color: #d8d8d8;
+
+    text-shadow:
+        0 0 8px rgba(255,255,255,0.18);
+}
+
+
+/* =========================================
+   TEXTO DA CONFIRMAÇÃO
+========================================= */
+
+.confirmacao-texto {
+    font-size: 14px;
+
+    line-height: 1.7;
+
+    color: #aeadad;
+
+    margin-top: 12px;
+}
+
+
+/* =========================================
+   BOTÃO DE CONFIRMAÇÃO
+========================================= */
+
+.botao-confirmar {
+    margin-top: 24px;
+
+    padding:
+        15px 35px;
+}
+
+
+/* =========================================
+   MENSAGEM ESPECIAL
+========================================= */
+
+.mensagem-especial {
+    width: 100%;
+
+    max-width: 650px;
+
+    text-align: center;
+
+    margin-top: 20px;
+
+    padding:
+        30px 25px 70px;
+
+    opacity: 0;
+}
+
 
 .conteudo.mostrar .mensagem-especial {
     animation:
@@ -186,59 +1241,818 @@
 
 
 /* =========================================
-   ANIMAÇÃO DAS ESTRELAS EXTRAS
+   LINHAS DA MENSAGEM
 ========================================= */
 
-.conteudo.mostrar .estrela-c11,
-.conteudo.mostrar .estrela-c12,
-.conteudo.mostrar .estrela-c13,
-.conteudo.mostrar .estrela-c14,
-.conteudo.mostrar .estrela-c15,
-.conteudo.mostrar .estrela-c16,
-.conteudo.mostrar .estrela-c17,
-.conteudo.mostrar .estrela-c18 {
+.mensagem-linha {
+    width: 120px;
 
-    animation-name: estrelaFlutuar;
+    height: 1px;
+
+    margin:
+        0 auto 25px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #bdbdbd,
+            transparent
+        );
+
+    box-shadow:
+        0 0 8px rgba(255,255,255,0.2);
 }
-/* CORREÇÃO DA SEGUNDA TELA */
-.conteudo {
+
+
+.mensagem-linha:last-child {
+    margin:
+        28px auto 0;
+}
+
+
+/* =========================================
+   TÍTULO DA MENSAGEM
+========================================= */
+
+.mensagem-titulo {
+    font-size: 14px;
+
+    letter-spacing: 5px;
+
+    color: #d8d8d8;
+
+    text-shadow:
+        0 0 8px rgba(255,255,255,0.15);
+}
+
+
+/* =========================================
+   TEXTO DA MENSAGEM
+========================================= */
+
+.mensagem-texto {
+    max-width: 550px;
+
+    margin:
+        22px auto 0;
+
+    font-size: 15px;
+
+    line-height: 1.9;
+
+    color: #b8b8b8;
+}
+
+
+/* =========================================
+   ASSINATURA
+========================================= */
+
+.mensagem-final {
+    margin-top: 24px;
+
+    font-size: 14px;
+
+    font-style: italic;
+
+    letter-spacing: 1px;
+
+    color: #dddddd;
+}
+
+
+/* =========================================
+   ANIMAÇÕES
+========================================= */
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+
+@keyframes fraseEntrada {
+    0% {
+        opacity: 0;
+
+        transform:
+            translateY(25px)
+            scale(0.96);
+
+        filter:
+            blur(4px);
+    }
+
+    60% {
+        opacity: 1;
+
+        filter:
+            blur(0);
+    }
+
+    100% {
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+
+@keyframes botaoEntrada {
+    0% {
+        opacity: 0;
+
+        transform:
+            translateY(20px)
+            scale(0.92);
+    }
+
+    100% {
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+
+@keyframes brilhoBotao {
+    0% {
+        left: -80%;
+    }
+
+    35% {
+        left: 140%;
+    }
+
+    100% {
+        left: 140%;
+    }
+}
+
+
+@keyframes brilhoPrata {
+    0% {
+        left: -100%;
+    }
+
+    45% {
+        left: 130%;
+    }
+
+    100% {
+        left: 130%;
+    }
+}
+
+
+@keyframes tituloEntrada {
+    0% {
+        opacity: 0;
+
+        transform:
+            translateY(-20px);
+
+        filter:
+            blur(5px);
+    }
+
+    100% {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+
+        filter:
+            blur(0);
+    }
+}
+
+
+@keyframes aUmEntrada {
+    0% {
+        opacity: 0;
+
+        transform:
+            translateY(15px);
+    }
+
+    100% {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+
+@keyframes estrelaSequencia {
+    0% {
+        opacity: 0;
+
+        transform:
+            scale(0.2)
+            rotate(-30deg);
+    }
+
+    70% {
+        opacity: 1;
+
+        transform:
+            scale(1.15)
+            rotate(8deg);
+    }
+
+    100% {
+        opacity: 1;
+
+        transform:
+            scale(1)
+            rotate(0deg);
+    }
+}
+
+
+@keyframes estrela19Brilho {
+    0% {
+        opacity: 0.65;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0.65;
+    }
+}
+
+
+@keyframes numeroSequencia {
+    0% {
+        opacity: 0;
+
+        transform:
+            scale(0.55)
+            translateY(25px);
+
+        filter:
+            blur(8px)
+            drop-shadow(
+                0 5px 4px rgba(0,0,0,0.65)
+            );
+    }
+
+    70% {
+        opacity: 1;
+
+        transform:
+            scale(1.06)
+            translateY(-4px);
+    }
+
+    100% {
+        opacity: 1;
+
+        transform:
+            scale(1)
+            translateY(0);
+
+        filter:
+            drop-shadow(
+                0 5px 4px rgba(0,0,0,0.9)
+            )
+            drop-shadow(
+                0 0 12px rgba(255,255,255,0.3)
+            );
+    }
+}
+
+
+@keyframes especialEntrada {
+    0% {
+        opacity: 0;
+
+        transform:
+            translateY(15px)
+            scale(0.95);
+    }
+
+    100% {
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+
+@keyframes nomeEntrada {
+    0% {
+        opacity: 0;
+
+        transform:
+            translateY(12px);
+
+        filter:
+            blur(3px);
+    }
+
+    100% {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+
+        filter:
+            blur(0);
+    }
+}
+
+
+@keyframes cardEntrada {
+    0% {
+        opacity: 0;
+
+        transform:
+            translateY(30px)
+            scale(0.94);
+    }
+
+    100% {
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+
+@keyframes lembreteEntrada {
+    0% {
+        opacity: 0;
+
+        transform:
+            translateY(15px);
+
+        filter:
+            blur(4px);
+    }
+
+    100% {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+
+        filter:
+            blur(0);
+    }
+}
+
+
+@keyframes confirmacaoEntrada {
+    0% {
+        opacity: 0;
+
+        transform:
+            translateY(25px);
+
+        filter:
+            blur(4px);
+    }
+
+    100% {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+
+        filter:
+            blur(0);
+    }
+}
+
+
+@keyframes mensagemEntrada {
+    0% {
+        opacity: 0;
+
+        transform:
+            translateY(30px);
+
+        filter:
+            blur(5px);
+    }
+
+    100% {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+
+        filter:
+            blur(0);
+    }
+}
+
+
+/* =========================================
+   CELULAR
+========================================= */
+
+@media (max-width: 600px) {
+
+    .espiadinha {
+        font-size: 29px;
+        margin-bottom: 35px;
+    }
+
+
+    button {
+        padding:
+            15px 35px;
+
+        font-size: 12px;
+    }
+
+
+    .estrela-1 {
+        width: 42px;
+        height: 42px;
+        top: 9%;
+        left: 7%;
+    }
+
+    .estrela-2 {
+        width: 18px;
+        height: 18px;
+    }
+
+    .estrela-3 {
+        width: 25px;
+        height: 25px;
+    }
+
+    .estrela-4 {
+        width: 45px;
+        height: 45px;
+    }
+
+    .estrela-5 {
+        width: 20px;
+        height: 20px;
+    }
+
+    .estrela-6 {
+        width: 34px;
+        height: 34px;
+    }
+
+    .estrela-7 {
+        width: 17px;
+        height: 17px;
+    }
+
+    .estrela-8 {
+        width: 39px;
+        height: 39px;
+    }
+
+    .estrela-9 {
+        width: 20px;
+        height: 20px;
+    }
+
+    .estrela-10 {
+        width: 27px;
+        height: 27px;
+    }
+
+    .estrela-11 {
+        width: 17px;
+        height: 17px;
+    }
+
+    .estrela-12 {
+        width: 23px;
+        height: 23px;
+    }
+
+    .estrela-13 {
+        width: 19px;
+        height: 19px;
+    }
+
+    .estrela-14 {
+        width: 32px;
+        height: 32px;
+    }
+
+
+    /* =====================================
+       SEGUNDA TELA
+    ====================================== */
+
+    .conteudo {
+        padding:
+            30px 20px 60px;
+    }
+
+
+    .convite-topo {
+        font-size: 13px;
+        letter-spacing: 4px;
+        margin-top: 10px;
+    }
+
+
+    .a-um {
+        font-size: 34px;
+        letter-spacing: 4px;
+    }
+
+
+    .estrela-19 {
+        font-size: 38px;
+        line-height: 0.65;
+        margin-top: 5px;
+        margin-bottom: -3px;
+    }
+
+
+    .numero-19 {
+        font-size: 90px;
+        letter-spacing: -9px;
+        padding-right: 9px;
+    }
+
+
+    .especial {
+        font-size: 20px;
+        letter-spacing: 7px;
+        padding-left: 7px;
+        margin-top: 12px;
+    }
+
+
+    .nome-aniversariante {
+        font-size: 18px;
+        letter-spacing: 3px;
+        margin-top: 10px;
+    }
+
+
+    .nome-aniversariante::after {
+        width: 110px;
+        margin-top: 10px;
+    }
+
+
+    /* =====================================
+       LEMBRETE NO CELULAR
+    ====================================== */
+
+    .lembrete {
+        width: 100%;
+        max-width: 330px;
+        margin-top: 30px;
+        padding:
+            10px 10px;
+    }
+
+
+    .lembrete-titulo {
+        font-size: 13px;
+    }
+
+
+    .lembrete-texto {
+        font-size: 12px;
+    }
+
+
+    /* =====================================
+       QUADRADOS NO CELULAR
+    ====================================== */
+
+    .detalhes {
+        gap: 10px;
+        margin-top: 25px;
+        flex-wrap: wrap;
+        width: 100%;
+    }
+
+
+    .detalhe {
+        width: 145px;
+        min-height: 150px;
+        padding:
+            20px 10px;
+    }
+
+
+    .icone {
+        font-size: 27px;
+        margin-bottom: 12px;
+    }
+
+
+    .detalhe p {
+        font-size: 10px;
+        letter-spacing: 3px;
+    }
+
+
+    .detalhe strong {
+        font-size: 14px;
+    }
+
+
+    /* =====================================
+       CONFIRMAÇÃO NO CELULAR
+    ====================================== */
+
+    .confirmacao {
+        max-width: 330px;
+        margin-top: 50px;
+        padding-bottom: 60px;
+    }
+
+
+    .confirmacao-titulo {
+        font-size: 13px;
+        letter-spacing: 3px;
+    }
+
+
+    .confirmacao-texto {
+        font-size: 12px;
+        line-height: 1.7;
+        margin-top: 10px;
+    }
+
+
+    .botao-confirmar {
+        margin-top: 20px;
+        padding:
+            14px 28px;
+    }
+
+
+    /* =====================================
+       MENSAGEM ESPECIAL NO CELULAR
+    ====================================== */
+
+    .mensagem-especial {
+        max-width: 340px;
+        margin-top: 10px;
+        padding:
+            20px 12px 60px;
+    }
+
+
+    .mensagem-linha {
+        width: 90px;
+        margin-bottom: 22px;
+    }
+
+
+    .mensagem-titulo {
+        font-size: 11px;
+        letter-spacing: 3px;
+    }
+
+
+    .mensagem-texto {
+        font-size: 13px;
+        line-height: 1.8;
+        margin-top: 18px;
+    }
+
+
+    .mensagem-final {
+        font-size: 12px;
+        margin-top: 20px;
+    }
+
+
+    .mensagem-linha:last-child {
+        margin-top: 25px;
+    }
+
+
+    /* =====================================
+       ESTRELAS DA SEGUNDA TELA
+    ====================================== */
+
+    .estrela-c1 {
+        width: 28px;
+        height: 28px;
+    }
+
+    .estrela-c2 {
+        width: 17px;
+        height: 17px;
+    }
+
+    .estrela-c3 {
+        width: 37px;
+        height: 37px;
+    }
+
+    .estrela-c4 {
+        width: 19px;
+        height: 19px;
+    }
+
+    .estrela-c5 {
+        width: 23px;
+        height: 23px;
+    }
+
+    .estrela-c6 {
+        width: 34px;
+        height: 34px;
+    }
+
+    .estrela-c7 {
+        width: 16px;
+        height: 16px;
+    }
+
+    .estrela-c8 {
+        width: 27px;
+        height: 27px;
+    }
+
+    .estrela-c9 {
+        width: 20px;
+        height: 20px;
+    }
+
+    .estrela-c10 {
+        width: 38px;
+        height: 38px;
+    }
+}
+
+
+/* =========================================
+   CORREÇÃO DO ESPAÇO BRANCO
+========================================= */
+
+html,
+body {
     margin: 0 !important;
-    padding-top: 30px !important;
-    min-height: 100vh;
-    background: #050505;
-}
-html,
-body {
-    margin: 0;
-    padding: 0;
-    background: #050505;
-}
-/* CORREÇÃO: segunda tela começa no topo */
-html,
-body {
-    margin: 0;
-    padding: 0;
+    padding: 0 !important;
     background: #050505;
 }
 
-.abertura {
-    position: fixed;
-    inset: 0;
-    width: 100%;
-    height: 100vh;
-    z-index: 10;
-}
 
 .abertura.fechar {
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-    transform: scale(1.05);
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+
+    position: absolute !important;
+
+    top: 0 !important;
+    left: 0 !important;
+
+    width: 100% !important;
+    height: 100vh !important;
+
+    min-height: 0 !important;
+
+    transform: scale(1.08);
 }
 
+
 .conteudo {
+    position: absolute !important;
+
+    top: 0 !important;
+    left: 0 !important;
+
+    width: 100% !important;
+
     margin: 0 !important;
-    padding-top: 30px !important;
-    min-height: 100vh;
-    background: #050505;
 }
